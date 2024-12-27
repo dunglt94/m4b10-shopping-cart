@@ -20,4 +20,11 @@ public class ShoppingController {
         modelAndView.addObject("cart",cart);
         return modelAndView;
     }
+
+    @GetMapping("/shopping-cart/pay")
+    public ModelAndView showPayment (@SessionAttribute("cart") Cart cart){
+        ModelAndView modelAndView = new ModelAndView("redirect:/shop");
+        cart.clearCart();
+        return modelAndView;
+    }
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+</head>
+<body>
+<p>
+    <a href="/shopping-cart">Your cart</a>
+</p>
+<h3>Product detail</h3>
+<p>
+    Name:
+    <span th:text="${product.name}"></span>
+</p>
+<p>
+    Price:
+    <span th:text="${product.price}"></span>
+</p>
+<p>
+    Description:
+    <span th:text="${product.description}"></span>
+</p>
+</body>
+</html>

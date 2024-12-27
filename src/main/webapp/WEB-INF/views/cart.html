@@ -19,10 +19,13 @@
             <th>Price</th>
         </tr>
         <tr th:each="product: ${cart.products}">
-            <td th:text="${product.getKey().name}"></td>
             <td>
-                <a id="decrease_button" th:text="${'-'}"></a>
-                <span th:text="${product.getValue()}"></span>
+                <a th:text="${product.getKey().name}" th:href="@{/view/{id}(id=${product.getKey().id})}"></a>
+            </td>
+            <td>
+                <a id="decrease_button" th:href="@{/remove/__${product.getKey().id}__(action='-')}"
+                   th:text="${'-'}"></a>
+                <span th:text=" ${product.getValue()} "></span>
                 <a id="increase_button" th:href="@{/add/__${product.getKey().id}__(action='show')}"
                    th:text="${'+'}"></a>
             </td>
@@ -35,5 +38,10 @@
         </tr>
     </table>
 </form>
+<div style="margin: 5px 0">
+    <form th:action="@{/shopping-cart/pay}" method="get">
+        <button type="submit">Pay</button>
+    </form>
+</div>
 </body>
 </html>

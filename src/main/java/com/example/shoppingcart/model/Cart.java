@@ -35,6 +35,19 @@ public class Cart {
         return null;
     }
 
+    public void removeProduct(Product product){
+        Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
+        if(itemEntry != null){
+            int newQuantity = itemEntry.getValue() - 1;
+            if (newQuantity == 0) {
+                products.remove(itemEntry.getKey());
+
+            } else {
+                products.replace(itemEntry.getKey(),newQuantity);
+            }
+        }
+    }
+
     public void addProduct(Product product){
         if (!checkItemInCart(product)){
             products.put(product,1);
@@ -63,5 +76,9 @@ public class Cart {
             payment += (float) (entry.getKey().getPrice() * (float) entry.getValue());
         }
         return payment;
+    }
+
+    public void clearCart(){
+        products.clear();
     }
 }
